@@ -1,0 +1,1484 @@
+Welcome to UC San Diego Library Software Carpentry May 17-18, 2016 Etherpad!
+
+### How to use:  
+    
+    1. Fill out your name top right and you will be giving a color highlight for your edts
+    2. add notes here
+    3. You can also chat in the bottom right chat window and instructors or helpers will help you with questions
+
+Users are expected to follow our code of conduct: http://software-carpentry.org/conduct.html
+
+Workshop Syllabus: http://lib.ucsd.edu/swc5-2016
+
+This Etherpad: http://pad.software-carpentry.org/2016-05-17-ucsd
+
+To get data: git clone https://github.com/ucsdlib/sd-workshop.git 
+
+OR download and extract https://github.com/ucsdlib/sd-workshop/archive/master.zip
+
+Get a github account for tomorrow: https://github.com/
+
+If Jupyter Notebook does not work, temporary notebook: http://mybinder.org/repo/ucsdlib/sd-workshop
+
+
+*Link to my notes if you guys want, Cheers!*
+    https://docs.google.com/document/d/1-fn4wcSfOamIkED_DRtQJMZrXHkNhK46dSdElVqaJuc/edit?usp=sharing
+
+
+
+*Instructors:
+Matt Critchlow - Git
+Tim Dennis - Python
+Reid Otsuji - Unix Shell
+
+
+*Helpers:
+    Day 1: Scott McAvoy, Ho Jung Yoo, John Gunvaldson
+    Day 2: Tim Dennis, Reid Otsuji, Ryan Johnson, Juliane Scheider
+    
+    
+    
+*Day 1 sign in.  Please make sure to sign in for the workshop. 
+fereshteh H.Tajabadi, fheidaritajabadi@ucsd.edu, visiting student Biology Dept
+Ming Zhou, mzhou@salk.edu, postdoc in salk
+Jerrod Fuller, jfuller@ucsd.edu, staff
+Renhou Wang, rew@ucsd.edu, UCSD
+Roger Tseng, rdtseng@ucsd.edu, Postdoc @ Susan Golden lab @ center for circadian biology
+Alyssa McCoy, almccoy@ucsd.edu, visiting graduate, Pediatrics Dept
+Robyn Chadwick, robyn@ucsd.edu, staff Scripps (Oceanography) IT
+Allison Flick, aflick@ucsd.edu, staff
+Adi Saxena, adsaxena@ucsd.edu, PostDoc, UCSD Div. of Biology
+Arwen Hutt, ahutt@ucsd.edu, Metadata Librarian, Library 
+Asami Yamamura, asyamamu@ucsd.edu, Grad Student, Pediatrics Dept
+Brian Crawford, Project Scientist UCSD briancrawford@ucsd.edu
+Ranveer Jayani rsjayani@ucsd.edu, Post-Doc, Dept of Medicine, UCSD
+Rafal Tamulski, rtamulski@ucsd.edu, staff - ETS/ITS
+Elaine Vuong, evuong@ucsd.edu, ETS/ITS staff
+Vicky (AJ) Rowley, vrowley@ucsd.edu, staff
+Xiaoshou Liu, x8liu@ucsd.edu, Visiting Scholar
+John Gunvaldson, jgunvaldson@ucsd.edu, Systems Integration Engineer, Middleware and Integration
+Vanessa Sitto, vsitto@ucsd.edu, staff
+Celia Espinoza, c2espinoza@ucsd.edu/ Pediatrics/ Staff
+Holly Bergen, hbergen@ucsd.edu, researcher @Dobkins Lab, UCSD
+
+
+
+
+
+
+
+
+*#######  UNIX SHELL   #####################################
+
+
+Unix Shell lesson Data setup:
+    
+Unix Shell Data - Git clone or download 
+##You need to download data files to follow this lesson:
+
+Clone swc repo - data-shell here: 
+    
+Or download zip and extract data:
+
+
+	* Create a folder titled Workshop on your Desktop.
+	* Download shell-novice-data.zip  http://swcarpentry.github.io/shell-novice/shell-novice-data.zip and save it in the Workshop folder.
+	* Double-click on the zip file to unzip it. 
+
+This is wrong, download whole 'sd-workshop' file
+We will be using a text editor for parts of the Unix Shell lesson.  
+On Windows machines, if nano hasn’t been properly installed, it is possible to use notepad or notepad++ as an alternative. 
+
+##Additional UNIX Shell Resources:
+    http://explainshell.com/
+    http://swcarpentry.github.io//shell-novice/reference.html
+    
+the # as a comment
+    > clear  #will clear your terminal screen. Note that you can actually scroll up to see previous command history if you want to.
+    > cd ~   # take you to your home directory
+    
+
+
+########### Roger Tseng's notes  (begin) ###############    
+ 
+ ################ Bash notes ######################
+
+ Useful commands:
+     
+     >whoami  # tells user on syst
+     
+     >pwd  # print working directory
+     
+     >ls
+     
+     >ls -Flag
+     e.g. 
+     
+     ls -F
+     
+     ls -F data-shell
+     
+     ls -F -a
+     
+     >cd
+     e.g.
+     
+     cd creature
+     
+     cd ..
+     
+     cd / # go into weird place, which is root folder
+     
+     cd ~
+     
+     >mkdir
+     e.g.
+     
+     mkdir thesis
+     
+     >nano file.txt
+     
+     >rm
+     e.g.
+     
+     rm draft.txt
+    
+    >rmdir
+    
+    >mv
+    
+    >cp
+    >wc #word count
+    e.g.
+    
+    wc *.pdb
+    
+    line   words   characters
+      20     156    1158 cubane.pdb
+      12      84     622 ethane.pdb
+       9      57     422 methane.pdb
+      30     246    1828 octane.pdb
+      21     165    1226 pentane.pdb
+      15     111     825 propane.pdb
+     107     819    6081 total
+     
+     wc -l *.pdb # just line count
+     
+     wc -l *.pdb > linecount.txt # write linecount to another file
+     
+     >cat length.txt 
+     
+     >sort --help
+     
+     sort -n lengths.txt
+     
+     sort -n length.txt  > sorted_length.txt
+     
+     >head -1 sorted_length.txt
+     
+     head --help
+     
+     > |   # pipe  # procedure 1 | procedure 2  # can pipe multiple times
+     e.g.
+     
+     sort -n length.txt | head -1
+     
+     wc -l *.pdb | sort -n
+     
+     wc -l *.pdb | sort -n | head -1
+     
+     >man #manual help
+     e.g.
+     
+     man sort
+     
+     >wc -l *.pdb | sort -n | head -n 3  # the get the 3 files that have the least number of line from *.pdb
+     
+     >wc -l *.txt|sort -n|head -5
+     >wc -l *.txt|sort -n|tail -5
+     
+     
+     ####### writing loops #########
+     
+     To avoid mistakes
+     
+ > for filename in basilisk.dat unicorn.dat # get head -n 3 for 2 files using loop # filename is arbitrary, can be change to anything 
+> do 
+>   head -n 3 $filename
+> done
+
+
+>for filename in *.dat
+> do
+>   echo $filename
+>   head -n 100 $filename | tail -n 20
+> done
+
+
+> for filename in *.dat  # rename files using loop
+> do
+>   cp $filename original-$filename
+> done
+
+>for datafile in *[AB].txt; 
+>do    
+>     echo $datafile 
+>done
+
+
+>for datafile in *[AB].txt   #run goostats script through *.txt files contain A or B and output to stats-*.txt
+> do
+>   echo $datafile
+>   bash goostats $datafile stats-$datafile
+> done
+
+
+>history 
+e.g.
+
+history | tail -n 5
+
+
+################ Git ######################
+
+version control: lab notebook of the digital world
+
+Can record different versions of the same file overtime
+
+glossary:
+    
+    commit  # a version
+    repository # storage area of commit
+
+>set up git in terminal
+git config --global user.name "type username"
+
+
+> need to set up core commands
+
+[roger: ~]$ git config --global user.email "type your email"
+
+[roger: ~]$ git config --global core.editor "edit"
+
+[roger: ~]$ git config --global core.autocrlf input
+
+[roger: ~]$ git config -l
+
+>create repository
+
+[roger: ~]$ mkdir planets
+[roger: ~]$ cd planets/
+
+
+[roger: ~/planets]$ git init               ## make this folder git initialized folder, everything under the fold just need git add and git commit, but a  different folder at different directory will need git init again.
+Initialized empty Git repository in /Users/roger/planets/.git/
+
+[roger: ~/planets]$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+
+> still need to add the file to git
+[roger: ~/planets]$ edit mars.txt
+cold[roger: ~/planets]$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        mars.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+[roger: ~/planets]$ git add mars.txt    ### comands to add this file to git, which is a precursor to make this file as a commit
+[roger: ~/planets]$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   mars.txt
+
+[roger: ~/planets]$ git commit -m "start notes on Mars as a base"     ### this command line finalizes making mars.txt to become commit 
+[master (root-commit) 11c66e4] start notes on Mars as a base
+ 1 file changed, 1 insertion(+)
+ create mode 100644 mars.txt
+ 
+ 
+ >> git log ## look at the unique ID of the commit file
+ 
+ [roger: ~/planets]$ git log
+commit 11c66e4b4bc99de60420c7706f88b6b7f2881aff
+Author: rtseng123 <roger.d.tseng@gmail.com>
+Date:   Wed May 18 09:44:13 2016 -0700
+
+    start notes on Mars as a base
+    
+>> git status  ## command line to check the status of the file
+e.g. 
+
+git status mars.txt
+
+>> git diff     ## to check difference of the file in git
+e.g.
+
+[roger: ~/planets]$ git diff mars.txt
+diff --git a/mars.txt b/mars.txt
+index 18e7fd6..9e36bf8 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,3 @@
+-cold
+\ No newline at end of file
++cold
++
++hot
+\ No newline at end of file
+
+
+>> git reset HEAD  ## unstage (unadd) the file
+e.g.
+[roger: ~/planets]$ git reset HEAD mars.txt
+
+>>git diff HEAD~1 me.txt   ## command to look at contents of 2 established commits
+e.g.
+
+[roger: ~/bio]$ git diff HEAD~1 me.txt
+diff --git a/me.txt b/me.txt
+index 75bcd7a..2d37a1f 100644
+--- a/me.txt
++++ b/me.txt
+@@ -1,3 +1,4 @@
+-heloo
++heloo hahah
+ world
+-here
+\ No newline at end of file
++here
++there
+\ No newline at end of file
+
+
+
+>touch  ## time stamp
+e.g.
+touch a.dat b.dat c.dat a.out b.out
+
+>>edit .gitignore  ## create ignore file, so that *.dat is ignored in the git status
+
+[roger: ~/planets]$ git add a.dat
+The following paths are ignored by one of your .gitignore files:
+a.dat
+Use -f if you really want to add them.
+fatal: no files added
+
+[roger: ~/planets]$ ls -la
+total 16
+drwxr-xr-x    9 roger  staff   306 May 18 10:54 .
+drwxr-xr-x+ 122 roger  staff  4148 May 18 10:23 ..
+drwxr-xr-x   13 roger  staff   442 May 18 10:56 .git
+-rw-r--r--@   1 roger  staff     7 May 18 10:54 .gitignore
+-rw-r--r--    1 roger  staff     0 May 18 10:50 a.dat
+-rw-r--r--    1 roger  staff     0 May 18 10:50 b.dat
+-rw-r--r--    1 roger  staff     0 May 18 10:50 c.dat
+-rw-r--r--    1 roger  staff     9 May 18 10:15 mars.txt
+drwxr-xr-x    4 roger  staff   136 May 18 10:51 results
+
+>>git status --ignored  ## look at what is being ignored
+e.g.
+
+[roger: ~/planets]$ git status --ignored
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        results/
+
+Ignored files:
+  (use "git add -f <file>..." to include in what will be committed)
+
+        a.dat
+        b.dat
+        c.dat
+        
+        
+        >> in .git ignore file
+        *.dat
+        !a.dat   ## this line accepts a.dat
+        
+ >>git remote -v  ## check loading to github from your computer
+  e.g.
+        [roger: ~/planets]$ git remote -v
+origin        https://github.com/rtseng123/planets.git (fetch)
+origin        https://github.com/rtseng123/planets.git (push)
+
+>> to collaborate, clone, edit, add, commit, then push
+e.g.
+git clone https://github.com/rtseng123/planets.git planet_new  #clone to a new folder
+git add
+git commit
+git push origin master #push
+
+
+########### Roger Tseng's notes  (end) ###############    
+
+
+
+    On Linux or OSX typing 'man <command>' will always give you more information and options. e.g man ls
+    On Windows, I think the equivalent is to use 'help' in place of 'man'
+    
+    Up and down keyboard arrows will scroll through your command history (VERY USEFUL)
+    
+> history  #will give you a full list of xx number of commands numbered, you can recall the command into your current line byt typing !number, e.g !10
+>ls -F -a  #will show hidden dotted folders and files
+
+    
+    
+	* Commands:
+		* $ = command line where to type commands
+		* whoami = username, current user (runs small program then returns to prompt)
+		* pwd = to know current location/path (print working directory)
+		* ls = Looking at content w/in fs. Prints names of files & directories in alphabetical order. 
+		* ls ____ = ls + foldermame
+		* ls -F = organizes by folders
+		* ls -F desktop = view contents of desktop
+		* ls -a = SHOW ALL (hidden folders, ./, .//)
+		* cd ____ = (Change Directory) Change location; go to certain folder ex: cd sd-workshop
+		* cd / = to root folder
+		* cd ~ or cd = to home directory
+		* cd, __tab = Type first few letters then TAB does auto-complete. Shortcut to typing folder names
+		* cd . = current working directory 
+		* cd .. = takes you back one level. Parent of current directory.
+		* mkdir = Make directory. Make new folder
+		* Creating new file:
+			* Program name + space + filenamecd ..
+			* cd ../..
+				* Ex: notepad draft.txt
+				* *Note: Typing notepad.draft.tx & ← Allows you to edit document & still work in the terminal 
+		* rm ____ = remove or delete ex: rm draft.txt
+			* Only works on files, not directories
+		* rmdir ____ = removes directories
+			* Cannot remove if file within 
+			* May use rm thesis/draft.txt 
+		* mv = rename (move)
+			* Ex: mv thesis/draft.txt thesis/quotes.txt
+		* mv . = move a file from directory it was in, into current
+			* Ex: mv thesis/quotes.txt . 
+		* cp = copies file instead of moving it 
+			* Ex: cp quotes.txt thesis/quotations.txt
+			* Show changes: ls quotes.txt thesis/quotes.txt thesis/quotations.txt
+		* Ctrl+c = kills theprocess and takes you back to the command prompt
+		* wc = wordcound 
+			* Ex: wc *.pdb ← asterisk tells shell to read all files with that extention
+			* Outputs columns: 1 number of lines 2 wordcount 3 characters
+		* wc -l = line count only
+			* Ex: wc -l *.pdb
+		* wc -l  > = outputs info to new file
+			* Ex: wc -l *.pdb > lengths.txt
+		* > = redirects output to new file 
+			* Ex: wc -l *.pdb > lengths.txt
+		* cat = concatenate. Prints contents of file 1 after another
+			* Ex: cat lengths.txt
+		* sort 
+			* Ex: sort -n lengths.txt
+			* Sorts from smallest to largest
+			* Save sorted list into new file:
+				* sort -n lengths.txt > sorted-lengths.txt
+		* head = pulls first few lines within file 
+			* Ex: head -1 sorted-lengths.txt
+			* Or head -n 1
+			* Shows only the first line of the file 
+			* Output of sorted list here shows shortest file
+		* tail = pulls last lines within file 
+			* Ex: tail - 5 sorted-lengths.txt
+		* | = Pipe. Keeps each command in memory & combines them. Runs one command instead of executing one at a time. Tells shell we want to use output of command on
+			* Ex: LEFT (sort) as input to command on RIGHT (head)
+			* Take original wc & sort numerically
+			* Ex: wc -1 *.pdb | sort -n | head -1
+
+
+		* Loops
+			* View first 3 lines of 2 files:
+				* For filename in basilisk.dat unicorn.dat 
+				* > do
+				* >   head -n 3 $filename
+				* > done
+			* Print first 100 lines & last 20 lines of files
+				* For filename in *.dat 
+				* >Do
+				* >        Echo $filename
+				* >        Head -n 100 $filename | tail -n 20
+				* >Done
+					* (Echo prints parameters to output)
+			* Rename multiple file names
+				* For filename in *.dat
+				* >Do
+				* >        Cp $filename original-$filename
+				* >Done 
+					* Output: basilisk.dat, original-basilisk.dat
+			* Create loop with only certain file types desired
+				* For datafile in *[AB].txt
+				* >do
+				* >        echo $datafile
+				* >done
+					* Brackets indicate OR in between
+					* If A then B or C, could do A[B] or A[C]
+			* Prefix each with stats
+				* For datafile in *[AB].txt
+				* >Do
+				* >        Echo $datafile stats-$datafile
+				* >Done 
+			* Running program or script that is processing files and outputs 
+				* For datafile in *[AB].txt
+				* >Do
+				* >        Echo $datafile stats-$datafile
+				* >        bash goostats
+				* >Done 
+*
+*  ###############  PYTHON  #############################
+
+
+
+all notes are in notebook_1 file in /Users/roger/Desktop/Workshop/py-data/notebook_1.ipynb
+
+
+
+	* Shift + Enter for initializing command (running cell)
+
+	* Commands:
+		* import numpy = Import directory. Able to read in csv files
+		* numpy.loadtxt( ) = fn call. Runs loadtxt. Numpy is the thing, file is loadtxt.
+			* Numpy turns data into matrix
+			* Delimiter separates elements by , 
+			* Ex: numpy.loadtxt(fname='inflammation-01.csv', delimiter = ',')
+		*  ___ + variable = Create variables
+			* Must start with letter
+			* Ex: weight_kg = 55        
+		* print( ) = prints variables
+			* Ex: print(weight_kg) 
+			* Python2: NO PARENTHESIS
+				* Print weight_kg
+		* ___? = help with function
+			* Ex: print?
+		* print(data)
+			* matrix
+		* print(type(data))
+			* Shows type
+		* print(data.shape)
+			* Gives length 
+		* ATTRIBUTE 
+			* don’t need parenthesis
+			* Ex: print(data.shape)
+		* PARENTHESIS 
+			* used when calling a function 
+		* Load array as variable:
+			* Ex: data = numpy.loadtxt(fname = 'inflammation-01.csv', delimiter=’,’)
+		* Indexing: 
+			* STARTS AT ZERO
+			* Ex: data[0:4,0:10]
+				* Rows 0, 1, 2, 3 
+				* Columns 0 through 9 
+			* Use colons instead, assumes 0 
+				* Ex: data[:4,:10]
+		* Axes:
+			* 0 = down columns (col)
+			* 1 = across columns (rows)
+
+		* Example:
+			* Doubledata = data * 2.0
+				* Multiplies all by 2
+			* Doubledata[:3, 36:]
+				* Indexing rows 0 to 3 & rows 36 to end
+			* Tripledata = Doubledata + data
+				* Can add matrices since they’re the same size
+			* print Tripledata
+			* print data.mean()
+				* Mean is descriptive, itself is a function you can pass values into, but here it will get the mean of ALL the values in the matrix
+			* Max, Min, Standard deviation:
+				* print 'maximum inflammation:', data.max()
+				* print 'minimumum inflammation:', data.min()
+				* print 'standard deviation', data.std()
+				* print(data.max(axis=0).shape)
+			* 2 ways of doing same thing:
+				* data.max() ← data is object
+				* numpy.max(data) ← data is argument being called
+
+		* Example (using program matplotlib.pyplot)
+			* import matplotlib.pyplot
+			* %matplotlib inline ← create image 
+			* image = matplotlib.pyplot.imshow(data)
+				* Shows entire plot of data
+			* ave_inflammation = data.mean(axis=0)
+				* Creates variable for axis 0
+			* ave_plot = matplotlib.pyplot.plot(ave_inflammation)
+				* Plots subset of new variable 
+			* matplotlib.pyplot.show(ave_plot)
+				* Shows image
+			* max_plot = matplotlib.pyplot.plot(data.max(axis=0))
+			* min_plot = matplotlib.pyplot.plot(data.min(axis=0))
+			* std_inflammation = matplotlib.pyplot.plot(data.std(axis=0))
+
+
+	* Slice = Section of array 
+		* Example:
+			* element = 'oxygen'
+			* print 'first three character:', element[0:3]
+			* print 'last three characters:', element[3:6]
+				* Output:
+					* first three character: oxy
+					* last three characters: gen
+		* Example: 
+			* element = 'oxygen'
+			* print 'first four character:', element[:4]
+			* print 'last four characters:', element[4:]
+			* print 'all characters:', element[:]
+				* Output:
+					* first four character: oxyg
+					* last four characters: en
+					* all characters: oxygen
+		* Examples:
+			* -# = gets back to elements
+				* Ex: element[-1] = n
+				* Ex: element[-2] = e
+				* Ex: element[1:-1] = xyge
+					* Goes from index 1 to index -1 from last 
+
+
+
+
+    ^ is control key
+    
+    ON WINDOWS:
+         run    "notepad draft.txt &"
+			         The "&" will run the editor in the background so you can still use the terminal.
+			
+			
+## nano 
+nano file.txt will open nano and in the current filename 
+nano by itself will open nano
+ctr+o in nano will save the file to the buffer
+ctr+x will exit file interactively and let you save or create a file
+
+mkdir thesis 
+nano thesis/draft.txt
+ctr-x and save
+ls thesis  # shows new file inside dir
+
+mv # moves files and directories
+cp # makes copies of files 
+cp quotes.txt thesis/quotes.txt # you can use paths or make it a new name
+
+## Word count / sort
+cd molecules
+wc *.pdb
+wc -l *.pdb 
+
+">" redirects the output 
+
+$ wc -l *.pdb > lengths.txt
+$ cat lengths.txt #shows what's inside of lengths
+$sort -n lengths.txt 
+
+$sort -n lengths.txt > sorted-lengths.txt
+$ head -n 1 sorted-lengths.txt  <head -1 lists the first line>
+
+Pipe is the vertical bar |
+$ sort -n lengths.txt | head -n 1
+$ wc -l *.pdb | sort -n 
+$ ws -l *.pdb | sort -n | heade -n 1 
+
+Piping is a way to chain multiple commands togther, every command has a standard input and standard output, the pipe will chain together these command where the output of each command is the input of the command to the right 
+
+man <COMMAND> lists all the options avail for a command. To quit man press q key.
+
+check out this diagram to help get a sense of how the piping is working 
+
+http://swcarpentry.github.io/shell-novice/fig/redirects-and-pipes.png
+
+for windows folks trying to use the man files, git bash won't install them, so it is best to just google the command
+all the man files are up on line 
+
+## LOOPS
+
+from inside creatures
+ 
+cd data-shell/creatures 
+*$ cp basilisk.dat unicorn.dat original-*.dat
+*too many inputs for cp - can't take two files
+
+* we need a loop 
+
+$ for filename in basilisk.dat unicorn.dat
+>do
+>  head -n 3 $filename
+>done
+
+$ signifies a variable in bash
+so we state the 'filename' in the for statement
+and then using it as a variable in the loop
+
+variable in this loop filename in order to make its purpose clearer to human readers. The shell itself doesn’t care what the variable is called; if we wrote 
+
+for x in basilisk.dat unicorn.dat
+do 
+   head -n 3 $x
+done
+
+by default head is 6 lines
+you can use the -n flag to be explicit
+but you can do a shortcut
+
+head -n 5 file.txt
+head -5 file.txt #shortcut
+
+there's also a -c flag for bytes (sequence of 8 bits)
+head -c file.txt 
+
+$ for filename in *.dat  -- a more involved script
+> do
+>    echo $filename
+>    head -n 100 $filename | tail -n 20
+> done
+
+Control C exits out of a loop prompt
+
+Up arrow scrolls back to previous commands, side arrow allows for us to fix typos or change a command then run again
+
+Variable can be embedded inside loop:
+    
+$ for filename in *.dat
+> do
+>   cp $filename original-$filename
+> done
+
+
+Wildcard in commands can have a range or any of the included ending [AB] means either A or B:
+    
+$ for datafile in *[AB].txt
+> do
+>   echo $datafile      [optional text]
+> done
+
+
+Edited for loop to include bash shell goostats to list file names included in another list:
+
+$ for datafile in *[AB].txt; do echo  $datafile; bash goostats $datafile  stats-datafile; done
+NENE01729A.txt
+NENE01729B.txt
+NENE01736A.txt
+NENE01751A.txt
+....
+stats-NENE01729A.txt
+.....
+
+
+$history  -- shows all commands ran
+
+
+*######## Python part 1 #############
+
+in sd_workshop/ run
+$ jupyter notebook
+click on "new" in upper right, choose Python 3
+
+
+Inflammation data is located in:
+     \sd-workshop\py-data
+
+Load data in to numpy:
+*numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+
+*weight_kg = 55
+*
+
+*print(weight_kg)
+
+*print('weight in pounds:', 2.2 * weight_kg)
+
+*weight_kg = 57.5
+
+print('weight in kilograms is now:', weight_kg)
+
+*weight_lb = 2.2 * weight_kg
+
+
+print('weight in kilograms:', weight_kg, 'and in pounds:', weight_lb)
+
+*weight_kg = 100.0
+
+ 
+
+*data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+
+*print(data)
+*
+*print(type(data))
+
+*print(data.shape)
+*
+*print('first value in data:', data[0, 0])
+
+*print('middle value in data:', data[30, 20])
+
+*print(data[0:4, 0:10])
+*
+data[:3, 36:]
+
+
+############ challenge  1 ######################
+A section of an array is called a slice. We can take slices of character strings as well:
+    
+element = 'oxygen'
+*print('first three characters:', element[0:3])print('last three characters:', element[3:6])
+
+*first three characters: oxy
+*last three characters: gen
+
+What is the value of element[:4]? What about element[4:]? Or element[:]?
+What is element[-1]? What is element[-2]? Given those answers, explain whatelement[1:-1] does.
+
+#############################################
+
+arithmatic on an array:
+doubledata  = data * 2.0
+
+doubledata 
+
+data[:3, 36:]
+
+doubledata[:3, 36:]
+tripledata = doubledata + data
+
+tripledata[:3, 36:]
+
+*print(data.mean())
+
+*print('maximum inflammation:', data.max())
+
+print('minimum inflammation:', data.min())
+
+print('standard deviation:', data.std())
+
+
+*patient_0 = data[0, :]    ### 0 on the first axis, everything on the second
+
+*print('maximum inflammation for patient 0:', patient_0.max())
+
+data[2, :].max()
+
+*print(data.mean(axis=0))
+
+*print(data.mean(axis=0).shape)
+shape is an attribute 
+
+
+Side note:
+type(data.shape) ####shows type of shape
+
+type(data.max) ##### shows this is a function
+
+
+data.max() 
+numpy.max(data) ##### apply function to data
+
+
+print(data.mean(axis=1).shape)
+
+
+#####  using matplotlib.plyplot
+import matplotlib.pyplot
+image = matplotlib.pyplot.imshow(data) 
+matplotlib.pyplot.show()  ### will popup a seperate image window
+
+%matplotlib inline  ##### inline will put image in the notbook
+
+*ave_inflammation = data.mean(axis=0)
+*ave_plot = matplotlib.pyplot.plot(ave_inflammation)
+*matplotlib.pyplot.show()
+
+
+*max_plot = matplotlib.pyplot.plot(data.max(axis=0))
+
+*matplotlib.pyplot.show()  ### do not need show ### auto done by inline
+show is used for running a script 
+
+*min_plot = matplotlib.pyplot.plot(data.min(axis=0))
+
+######  challenge  ######## 
+Create a plot showing the standard deviation (numpy.std) fo the inflammation odata for each day across all patients
+
+std_inf_plot = matplotlib.pyplot.plot(data.std(axis=0))
+
+
+The missing sections for the lesson notes,  after the afternoon break can be read in the software caprentry lessons we will post after the workshop 
+
+
+
+
+######### list challenege  #####
+Use a for-loop to convert the string “hello” into a list of letters:
+*["h", "e", "l", "l", "o"]
+
+*Hint: You can create an empty list like this:
+*my_list = []
+
+my_list = []
+for char in 'hello':
+	    my_list += char
+print(my_list)
+
+my_list = []
+for char in 'hello':
+	    my_list.append(char)
+print(my_list)
+
+my_list = []
+for char in 'hello':
+	    my_list += list(char)
+print(my_list)
+
+
+
+
+###################### Day 2  ####################
+*Day 2 sign in.  Please make sure to sign in for the workshop. 
+*name, email, affiliation
+Allison Flick - aflick@ucsd.edu - Student Affairs
+Robyn Chadwick - robyn@ucsd.edu - Scripps IT
+Renhou Wang, rew002@ucsd.edu, ucsd
+Roger Tseng, rdtseng@ucsd.edu, Postdoc @ Susan Golden lab @ center for circadian biology
+Holly Bergen, hbergen@ucsd.edu, researcher @Dobkins Lab, UCSD
+Xiaoshou Liu, x8liu@ucsd.edu, visiting scholar at SIO
+Anca Segall, asegall@mail.sdsu.edu, Professor,  Biology Department SDSU, JDP SDSU-UCSD Biology
+Adi Saxena, UCSD, Div.Bio, Postdoc
+Alyssa McCoy, almccoy@ucsd.edu, visiting graduate, Pediatrics Dept 
+Rafal Tamulski, rtamulski@ucsd.edu, ITS/ETS
+Celia Espinoza-c2espinoza@ucsd.edu-Pediatrics-Staff
+Vanessa Sitto, vsitto@ucsd.edu, staff
+Jerrod Fuller, jfuller@ucsd.edu, staff
+Arwen Hutt, ahutt@ucsd.edu, library
+Elaine Vuong, evuong@ucsd.edu, ETS/ITS
+Ranveer Jayani rsjayani@ucsd.edu, Post Doc, Medicine, UCSDgit 
+Ming Zhou, mzhou@salk.edu, postdoc, Salk
+
+*######### Git and Github ################
+
+
+
+Matt's git log https://www.dropbox.com/s/y99wzvx2co11qlj/GitHistory.txt?dl=0   <<-----Full history here 
+
+
+
+Please make sure you have a github account.  
+
+
+Git is a Version control system - it’s what professionals use to keep track of what they’ve done and to collaborate with other people.
+
+Automated version control not just for software devs 
+
+Version control systems start with a base version of the document and then save just the changes you made at each step of the way.
+
+Multiple file versions can be merged from 2 differnt sources - another fundamental part of version control 
+
+Glossary - the git terminology
+Version control 
+commit
+repository
+merge
+
+
+the version control acronyms :
+    VCS - version control system - CVS, subversion, RCS
+    DVCS distributed version control system - e.g. Git, Mercurial 
+    
+On to the Command line stuff! 
+
+### open terminal or gitbash and go to your home directory 
+ cd ~ 
+ 
+### chekc if git is installed 
+git 
+
+git config --global user.name "[your github username here]" 
+
+git config --list
+
+git config --global user.email "[use your email for your github account]"
+
+git config --list  #### run again  to veriry your email 
+
+git config --global core.editor "nano -w"  #### windows users can use notepad or nano if gitbash is installed 
+
+
+#### more info about line endings and why it's important to know
+ https://help.github.com/articles/dealing-with-line-endings/#global-settings-for-line-endings 
+
+git config --global core.autocrlf input  ## for mac
+git config --global core.autocrlf true  ## for windows 
+
+### shortcut to show list.   there are flags you can use
+git config -l
+git help 
+
+git status ### useful command to know to know the state of git
+
+
+Creating a repository or repo:
+mkdir planets
+cd planets 
+
+git init 
+ls -a ## to see the hidden .git file
+
+
+ls -la  ## list files in a list view
+
+git status 
+
+pwd ##check to make sure you are in your planets directory
+
+nano mars.txt 
+
+add some text to the mars.txt file , save file
+
+note: in nano ^ = crtl or control key 
+
+cat mars.txt 
+
+
+git status  ## git will now show there has been a change a folder/file
+
+
+git add mars.txt  ## sets file to commit to repository
+git status 
+
+git commit -m "start notes on mars as base"
+###  -m flag means to add a commit message.  these messages are requirled by git.  every commit needs a commit message. make sure your write something useful that will inform others what changes were made.  
+
+git diff 
+
+git diff mars.txt
+
+git commit -m "another commit"
+
+
+git add mars.txt
+git status
+
+git reset head mars.txt  ## fixing commits
+
+git status
+
+git add mars.txt ## add file back 
+
+git log ## shows revison history for content you are working 
+
+### Exercise #### 
+
+Which command(s) below would save the changes of myfile.txt to my local Git repository?
+
+1. $ git commit -m "my recent changes"
+
+2. $ git init myfile.txt
+$ git commit -m "my recent changes"
+
+3. $ git add myfile.txt
+$ git commit -m "my recent changes"
+
+4. $ git commit -m myfile.txt "my recent changes"
+
+
+########################
+
+
+## git diff history  ##
+git log
+
+git diff HEAD~1 mars.txt  ## HEAD is the most recent commit 
+
+git diff HEAD~2 mars.txt 
+
+git status 
+
+## revert to last change 
+git checkout HEAD mars.txt
+cat mars.txt 
+
+git checkout HEAD~1  ##detached head state 
+git check out master 
+
+## dont' get to this state, if you do, get out of it 
+
+
+##### exercise ####### 
+Tracking changes 
+
+## for the next lesson we need to create a results folder and a bunch of .dat files 
+
+*$ mkdir results
+*$ touch a.dat b.dat c.dat  results/a.out  results/b.out
+
+git status 
+
+
+
+##creating a .gitignore file.   tell git to ignore/exclude files - create files to make git exclude them.  make sure you are creating the .gitignore file in the root of your project e.g. planets folder 
+
+nano .gitingore
+
+##in ignore file type:
+*.dat
+results/
+
+##save the .ignore file 
+
+git status 
+
+## remember you need to add commit the .gitignore file 
+
+git add .gitignore 
+git status 
+git commit -m "adding ignore file"
+
+
+
+git add a.dat 
+
+## cannot add file because .dat was added to the ignore file 
+
+## exercises ##### 
+1.  Ignore nested files
+
+Given a directory structure that looks like:
+    
+*results/data
+results/plots
+
+how would you ignore only results/plots and not results/data?
+
+
+2.  Given a .gitignore file with the following contents:
+**.data
+*!*.data
+What will be the result?
+
+###################
+
+## commenting in .ignore files uses # symbol
+
+
+#### exploring github  ######## 
+
+make sure you have a git hub account 
+
+github is a widely used version control system 
+
+
+browse to github.com  ## overview of landing page 
+sign in if you haven't already 
+
+you can create a new reposity by clicking on the green new repository button 
+
+name repo 
+planets
+
+good practice to fill out and add a brief description 
+
+public or private option - select public 
+
+click create a repository 
+
+
+quick setup screen 
+
+
+git remote add origin https://github.com/ [your github account] /planets.git
+git remote -v
+
+
+## Push command 
+
+*git push origin master
+*git pull origin master
+
+
+####   Github GUI  ####
+online repo should show:
+    
+.gitignore 
+mars.txt 
+
+
+###### exercise   ########
+
+Browse to your planets repository on GitHub. Under the Code tab, find and click on the text that says “XX commits” (where “XX” is some number). Hover over, and click on, the three buttons to the right of each commit. What information can you gather/explore from these buttons? How would you get that same information in the shell?
+
+
+SHA1 - hash unique 40char string -- git uses the frist 7 characters or short version of the string 
+
+## to view SHA1
+git log 
+
+### good practice to avoid merge conflicts, do a git pull then push 
+## when working with projects and git have good communication with your team to avoid conflicts 
+
+
+### exercise ####### 
+The Owner push commits to the repository without giving any information to the Collaborator. How can the Collaborator find out what has changed with command line? And on GitHub?
+
+################ Python Part  2  #################
+Python, Day 2
+
+
+
+Open Jupyter notebook
+
+import glob
+
+glob.glob ###finds files that match a pattern
+
+glob.glob('inflammation*.csv') ###0 or more characters will match *   Will output a list of files that match
+
+count = 0
+for filename in glob.glob(''*.csv):
+    count = counter + 1
+print("number of files:", count)
+
+
+count = 0
+for filename in glob.glob('inflammation*.csv'):
+    count  += 1
+    print("number of files:", count)
+    
+
+import numpy
+
+    
+count = 0
+for filename in glob.glob('inflammation*.csv'):
+    data = numpy.loadtxt(fname = filename, delimiter=',')
+    print(filename, "mean is: ", data.mean())
+    count  += 1
+print("number of files: ", count)
+    
+
+import matplotlib.pyplot
+%matplotlib inline
+
+count = 0
+for filename in glob.glob('inflammation*.csv'')[0:3]:
+    count += 1
+    print(filename)
+    
+    data = numpy.loadtxt(fname = filename, delimiter = ',')
+    
+    fig = matplotlib.pyplot.figure(figsize =(10.0,3.0))
+    
+axes1 = fig.add_subplot(1,3,1)
+axes2 = fig.add_subplot(1,3,2)
+axes3 = fig.add_subplot(1,3,3)
+
+axes1.set_ylabel('average')
+axes1.plot(data.mean(axis=0))
+
+axes2.set_ylabel('max')
+axes2.plot(data.max(axis=0))
+
+axes3.set_ylabel('Min')
+axes3.plot(data.min(axis=0))
+
+fig.tight_layout()    ###used to make the graphs pretty
+matplotlib.pyplot.show(fig) ## show should not be used in notebook if you want to save the figures, comment out this line
+matplotlib.plyplot.savefig(filename.replace('csv','png'))   ### code to save figures 
+
+print("number of files:", count)
+
+matplotlib.pyplot.savefig(filename.replace('csv' , 'png) )
+
+num = 37
+if num> 100;
+	print('greater')
+else:
+    print('not greater')
+    
+    number = 53
+    print('before conditional ...')
+    if num > 100
+	    print('...after conditional')
+	
+	
+	
+num = -3
+if num > 0:
+	print(num, "is positive")
+elif num == 0":
+    print(num, 'is zero')
+else:
+    print(num, "is negative")
+    
+    if (1>0) and (-1 > 0):
+		 print('both parts are true')
+        else:
+            print('at least one part is false')
+
+
+if (1 < 0) or (-1 < 0):
+    print('at least one test is true')
+    
+if 4 > 5:
+	    print("a")
+elif 4 == 5:
+	    print("b")
+elif 4 < 5:
+    print("c")
+    
+###The answer is c
+
+
+data = numpy.loadtxt(fname = 'inflammation-01.csv', delimiter = ',')
+if data.max(axis=0)[0] == 0 and data.max(axis=0)[20] == 20:
+	    print("suspicious looking maxima")
+elif data.min(axis = 0).sum() == 0
+	print('Minima add up to zero')
+else print('seems OK')
+
+
+	##### FUNCTIONS! ########
+
+print("boiling point of water:', fahr_to_kelvin(212))
+
+
+def kelvin_to_celsius(temp_k):
+	    return temp_k - 273.15
+	print('absolut zero in Celsius:', kelvin_to_celsius(0.0))
+	
+def fahr_to_celsius(temp_f):
+    temp_k = fahr_to_kelvin(temp_f)
+    result = kelvin_to_celsius(temp_k)
+    return result
+print('freezing point of water in celsius:', fahr_to_celsius(32.0))
+
+
+i### save your code to a .py file and then use it when needed
+
+### solution to challenge
+
+def fence(original, wrapper):
+	    return wrapper + original + wrapper
+	fence('name', '*')
+	
+
+
+def analyze(filename):######function 1
+    print(filename)
+
+    data = numpy.loadtxt(fname = filename, delimiter = ',')
+    
+    fig = matplotlib.pyplot.figure(figsize =(10.0,3.0))
+    
+axes1 = fig.add_subplot(1,3,1)
+axes2 = fig.add_subplot(1,3,2)
+axes3 = fig.add_subplot(1,3,3)
+
+axes1.set_ylabel('average')
+axes1.plot(data.mean(axis=0))
+
+axes2.set_ylabel('max')
+axes2.plot(data.max(axis=0))
+
+axes3.set_ylabel('Min')
+axes3.plot(data.min(axis=0))
+
+fig.tight_layout()    ###used to make the graphs pretty
+matplotlib.pyplot.show(fig)     
+
+
+
+
+def detect_problems(filename):############function 2
+'''Take a filename and detect problems
+	like suspicious looking maxima or
+	minima up to zero
+	
+	Example: detect_problem(file.csv) => 'Minima add up to zero'
+	'''
+data = numpy.loadtxt(fname = filename, delimiter = ',')
+if data.max(axis=0)[0] == 0 and data.max(axis=0)[20] == 20:for f in fil
+	    print("suspicious looking maxima")
+elif data.min(axis = 0).sum() == 0
+	print('Minima add up to zero')
+else print('seems OK')
+
+
+filenames = glob.glob('inflammation*.csv')
+
+for f in filenames[:3]:
+    print(f)
+    analyze(f)
+    detect_problems(f)
+
+Second function challenge solution
+
+def outer(input_string):
+    return input_string[0] + input_string[-1]
+    outer('helium')
+    
+#comment on your function about what it doees ( a description)
+
+
+#use three quotes for multiline string
+'''a multiline string
+line 2
+line 3 '''
+
+#for help use a question mark
+detect_problems?
+
+
+#or use help
+help(numpy.loadtext)
+
+data = pandas.read_csv('AI_mosquito_data.csv')
+print(type(data))
+<class 'pandas.core.frame.DataFrame'>
+print(data['year'])
+
+print(data[['rainfall, temperature]])
+
+print(data[0:2])
+
+print(data(data[1:2])
+
+
+data.iloc[1]
+
+#to save something to a file in a different format:
+    
+d2.to_csv('d2.csv')
+
+print(data['temperature'][data['year'] > 2005])
+
+data.mean()
+
+data.plot()
+
+
+
+
+
+Call
+Send SMS
+Call from mobile
+Add to Skype
+You'll need Skype CreditFree via Skype
+
